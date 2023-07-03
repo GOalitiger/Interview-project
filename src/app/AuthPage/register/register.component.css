@@ -1,0 +1,19 @@
+.heading{
+    color: #3f51b5;
+    font: revert;
+}
+form {
+    margin-left: 25%;
+    margin-right:25%;
+    width: 50%;
+    /* height: 70%; */
+    /* display: flex;
+    justify-content: center; */
+  }
+.custbtn
+  {
+    padding-top: 12px;
+    padding-bottom: 12px;
+      border-top-width: 0px;
+    width: 100%;
+  }

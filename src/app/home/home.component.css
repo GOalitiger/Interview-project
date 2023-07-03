@@ -1,0 +1,19 @@
+.mat-table {
+    width: 100%;}
+    
+    
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+.mat-column-id,
+.mat-column-userId, 
+.mat-column-update, 
+.mat-column-delete 
+{  max-width: 64px;
+}
+
+.mat-column-createdAt {
+  max-width: 124px;
+}

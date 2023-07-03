@@ -1,0 +1,53 @@
+<mat-card>
+  <h6 style="color:  #3f51b5;;">User Details</h6>
+  <hr>
+  <br>
+  <div class="row">
+    <div class="col-md-12 example-container">
+
+      <form [formGroup]="userForm" #f="ngForm">
+        <div class="row">
+          <div class="col-md-3">
+            <mat-form-field appearance="outline" >
+              <mat-label>User Name</mat-label>
+              <input matInput formControlName ="id">
+            </mat-form-field>
+          
+          </div>
+          <div class="col-md-3">
+            <mat-form-field  appearance="outline">
+              <mat-label>User Id</mat-label>
+              <input matInput  formControlName ="name">
+            </mat-form-field>
+          
+          </div>
+          <div class="col-md-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput  formControlName ="email">
+            </mat-form-field>
+          
+          </div>
+          <div class="col-md-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Created At</mat-label>
+              <input matInput  formControlName ="createdAt">
+            </mat-form-field>
+          
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <hr>
+  <br>
+  <h6 style="color:  #3f51b5;;">User Posts</h6>
+  <hr>
+  <br>
+  <app-home [callingComponent]="'calling'" [UserId]="userId"></app-home>
+  <hr>
+  
+  <div class="row center-Btn">
+    <button mat-raised-button color="primary" (click)="routeBack()">Back</button>
+  </div>
+</mat-card>

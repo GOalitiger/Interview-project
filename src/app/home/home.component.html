@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <mat-card>
+    <div style=" display: flex;flex-direction: row;justify-content: flex-end;;" *ngIf="callingComponent==null">
+      <div class="btn-toolbar">
+        <button mat-raised-button color="primary" (click)="FilterMyPost()">{{showButtons== false?'Show My Posts':'Show
+          All Posts'}}</button>|
+        <button mat-raised-button color="primary" (click)="openDialog()">Create Post</button>
+
+      </div>
+
+    </div>
+    <hr>
+    <div class="col-md-12">
+      <mat-form-field>
+
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+      </mat-form-field>
+    </div>
+
+    <div class="table-responsive">
+      <mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)" class="mat-elevation-z8">
+
+
+        <!-- id Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> PostId </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="body">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Post </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.body}} </mat-cell>
+        </ng-container>
+
+        <!-- email Column -->
+        <ng-container matColumnDef="userId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> User Id </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.userId}} </mat-cell>
+        </ng-container>
+
+        <!-- CreatedAt Column -->
+        <ng-container matColumnDef="createdAt">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Created</mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.createdAt| date: 'dd/MM/yyyy'}} </mat-cell>
+        </ng-container>
+
+        <!--  Column -->
+        <ng-container matColumnDef="update">
+          <mat-header-cell *matHeaderCellDef> Update Post </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-mini-fab color="primary" (click)="updatePost(element.body,element.id)">
+              <mat-icon>update</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <mat-header-cell *matHeaderCellDef> Delete Post</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button mat-mini-fab (click)="deletePost(element.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+      <mat-paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        (page)="pageEvent = $event;onPageClick($event);">
+      </mat-paginator>
+    </div>
+
+  </mat-card>
+</div>

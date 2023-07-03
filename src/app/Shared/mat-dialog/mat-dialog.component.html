@@ -1,0 +1,43 @@
+<div class="container" *ngIf="data.form=='create' || data.form=='update'">
+  <mat-card>
+  <h1 mat-dialog-title>{{data.form=='create'? 'Create':'Update'}} Post</h1>
+  <div mat-dialog-content>
+
+    <div class="col-xs-12">
+      <form class="example-form" [formGroup]="form" #f="ngForm">
+   
+        <mat-form-field class="example-full-width">
+          <mat-label>Write Here</mat-label>
+          <textarea matInput placeholder="Add Your Post..." formControlName="body"></textarea>
+          <mat-error *ngIf="form.get('body').invalid">{{getErrorMessage('body')}}</mat-error>
+        </mat-form-field>
+
+      </form>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="onNoClick()" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="f.value" cdkFocusInitial
+[disabled]="!f.valid">Ok</button>
+  </div>
+</mat-card>
+</div>
+
+<div  *ngIf="data.form =='delete'|| data.form =='user'">
+  <h1 *ngIf="data.form =='delete'" mat-dialog-title>Do you want to delete this Post?</h1>
+  <h1 *ngIf="data.form =='user'" mat-dialog-title>Do you want to delete your account?</h1>
+  <div mat-dialog-content></div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="onNoClick()" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+  </div>
+</div>
+
+<div  *ngIf="data.form =='logout' ">
+  <h1 mat-dialog-title>Do you want to log out?</h1>
+  <div mat-dialog-content></div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="onNoClick()" [mat-dialog-close]="false">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Ok</button>
+  </div>
+</div>

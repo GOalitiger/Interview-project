@@ -1,0 +1,16 @@
+<div>
+  <mat-toolbar color="primary">
+    <mat-icon>apps</mat-icon>
+    <div *ngIf="this.sharedService.LoggedIn">
+      <a mat-button routerLink="./home">Home</a>
+      <a mat-button routerLink="./users">Users</a>
+    </div>
+    <span class="example-spacer"></span>
+    <a mat-button routerLink="./login" *ngIf="!this.sharedService.LoggedIn">Login</a>
+    <div *ngIf="this.sharedService.LoggedIn">
+
+      <a mat-button (click)="logOut()">Log Out</a>
+    </div>
+  </mat-toolbar>
+  
+</div>
